@@ -1,8 +1,10 @@
 const express = require('express')
 const time = require('express-timestamp')
+const bodyParser = require('body-parser')
 
 const app = express()
 app.use(time.init)
+app.use(bodyParser.json())
 
 let persons = [
     {
@@ -19,7 +21,7 @@ let persons = [
         id: 3,
         name: "Arto Järvinen",
         number: "040-123456"
-    }, 
+    },
     {
         id: 4,
         name: "Lea Kutvonen",
@@ -35,7 +37,7 @@ app.get('/api/persons/:id', (req, res) => {
     const id = Number(req.params.id)
     const person = persons.find(person => person.id === id)
 
-    if ( person ) {
+    if (person) {
         res.json(person)
     } else {
         res.status(404).end()
@@ -53,6 +55,13 @@ app.delete('/api/persons/:id', (req, res) => {
     persons = persons.filter(person => person.id !== id)
 
     res.status(204).end()
+})
+
+app.post('/api/persons', (req, res) => {
+    const person = req.body
+    person.id = Math.floor(Math.random() * 100000000000)
+
+    res.json(person)
 })
 
 const PORT = 3001
