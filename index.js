@@ -12,23 +12,23 @@ app.use(morgan('tiny'))
 let persons = [
     {
         id: 1,
-        name: "Arto Hellas",
-        number: "040-123456"
+        name: 'Arto Hellas',
+        number: '040-123456'
     },
     {
         id: 2,
-        name: "Martti Tienari",
-        number: "040-123456"
+        name: 'Martti Tienari',
+        number: '040-123456'
     },
     {
         id: 3,
-        name: "Arto Järvinen",
-        number: "040-123456"
+        name: 'Arto Järvinen',
+        number: '040-123456'
     },
     {
         id: 4,
-        name: "Lea Kutvonen",
-        number: "040-123456"
+        name: 'Lea Kutvonen',
+        number: '040-123456'
     }
 ]
 
@@ -76,5 +76,5 @@ app.post('/api/persons', (req, res) => {
 
 const PORT = 3001
 app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`)
+    console.log(`App Listening to port ${PORT}`)
 })
