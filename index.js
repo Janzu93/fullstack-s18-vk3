@@ -1,10 +1,12 @@
 const express = require('express')
 const time = require('express-timestamp')
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
 
 const app = express()
 app.use(time.init)
 app.use(bodyParser.json())
+app.use(morgan('tiny'))
 
 let persons = [
     {
