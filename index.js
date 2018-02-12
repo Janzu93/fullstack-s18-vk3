@@ -61,7 +61,14 @@ app.post('/api/persons', (req, res) => {
     const person = req.body
     person.id = Math.floor(Math.random() * 100000000000)
 
-    res.json(person)
+    if (person.number === undefined || person.name === undefined) {
+        res.status(400).json({error: 'Name or number missing'})
+    } else if (persons.find(p => p.name === person.name).length > 0) {
+        res.status(400).json({error: 'Name must be unique'})
+    } else {
+        persons.concat(person)
+        res.json(person)
+    }
 })
 
 const PORT = 3001
