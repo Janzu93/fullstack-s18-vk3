@@ -48,6 +48,13 @@ app.get('/info', (req, res) => {
     res.end(`<p>puhelinluettelossa on ${count} henkilön tiedot</p><p>${time}</p>`)
 })
 
+app.delete('/api/persons/:id', (req, res) => {
+    const id = Number(req.params.id)
+    persons = persons.filter(person => person.id !== id)
+
+    res.status(204).end()
+})
+
 const PORT = 3001
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`)
