@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const app = express()
 app.use(time.init)
 app.use(bodyParser.json())
+
 app.use(morgan('tiny'))
 
 let persons = [
@@ -64,9 +65,9 @@ app.post('/api/persons', (req, res) => {
     person.id = Math.floor(Math.random() * 100000000000)
 
     if (person.number === undefined || person.name === undefined) {
-        res.status(400).json({error: 'Name or number missing'})
+        res.status(400).json({ error: 'Name or number missing' })
     } else if (persons.find(p => p.name === person.name)) {
-        res.status(400).json({error: 'Name must be unique'})
+        res.status(400).json({ error: 'Name must be unique' })
     } else {
         persons = persons.concat(person)
         res.json(person)
