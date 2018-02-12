@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/Janzu93/fullstack-s18-vk3#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "express-timestamp": "^0.1.4"
   },
   "devDependencies": {
     "nodemon": "^1.14.12"
